@@ -105,3 +105,5 @@ dist
 
 #vscode local files
 .vscode/
+
+dist/
