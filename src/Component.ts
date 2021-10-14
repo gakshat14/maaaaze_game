@@ -1,6 +1,6 @@
 abstract class Component {
-    protected readonly _xCoord: number;
-    protected readonly _yCoord: number;
+    protected  _xCoord: number;
+    protected  _yCoord: number;
     protected readonly _ctx: CanvasRenderingContext2D;
     protected readonly _fillStyle: string;
     constructor(x: number, y: number, ctx: CanvasRenderingContext2D, fillStyle = 'black') {
@@ -10,7 +10,7 @@ abstract class Component {
         this._fillStyle = fillStyle;
     }
 
-    abstract render(): void;
+    protected abstract render(): void;
 }
 
 export class Circle extends Component {
@@ -21,10 +21,24 @@ export class Circle extends Component {
         this.render();
     }
 
-    render() {
+    protected render() {
         this._ctx.beginPath();
         this._ctx.arc(this._xCoord, this._yCoord, this._radius, 0, 360);
         this._ctx.fillStyle = this._fillStyle;
         this._ctx.fill();
+    }
+
+    updatedCoordinates(xIncrement, yIncrement) {
+        if(this._xCoord === 50 && xIncrement > 0) {
+            this._xCoord += xIncrement;
+        } else if(this._xCoord !== 50) {
+            this._xCoord += xIncrement;
+        }
+        if(this._yCoord === 50 && yIncrement > 0) {
+            this._yCoord += yIncrement
+        } else if(this._yCoord !== 50) {
+            this._yCoord += yIncrement
+        }
+        return {x: this._xCoord, y: this._yCoord};
     }
 }

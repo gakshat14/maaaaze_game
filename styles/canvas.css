@@ -1,5 +1,23 @@
 canvas{
     background-color: #f1f1f1;
     margin: 20px;
+    margin-left: 0;
     border: 1px solid #d3d3d3;
+    max-width: 100%;
+}
+
+div#button_container {
+    display: none;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#maze_size_form {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+#game_over {
+    display: none;
 }
